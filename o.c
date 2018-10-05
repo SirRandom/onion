@@ -7,8 +7,8 @@ HANDLE heap;
 ull ctrfreq;
 Queue* queues[5];
 
-Grid* r[RC_MAX];
-uint v = 0;
+//Grid* r[RC_MAX];
+//uint v = 0;
 
 static Grid* init(uint sz)
 {
@@ -52,7 +52,7 @@ static Grid* init(uint sz)
 	return g;
 }
 
-static void rc(Grid* g)
+/*static void rc(Grid* g)
 {
 	if(v < RC_MAX)
 	{
@@ -81,7 +81,7 @@ static void rc(Grid* g)
 	}
 	else
 		rmgrid(g);
-}
+}*/
 
 static void bf(Grid* g)
 {
@@ -90,9 +90,7 @@ static void bf(Grid* g)
 
 int main(int argc, char** argv)
 {
-	init();
-	Grid* g = mkgrid(argc > 1 ? atoi(argv[1]) : 13);
-	rc(g);
+	bf(init(argc > 1 ? atoi(argv[1]) : 13u));
 	
 	uint i;
 	for(i = 0; i < v; i++)

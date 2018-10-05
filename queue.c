@@ -4,12 +4,12 @@ void qAdd(Queue* q, Grid* g)
 {
 	if(q -> len == q -> cap)
 	{
-		q -> tail = q -> 0;
-		q -> head = q -> cap;
+		q -> tail = q -> cap;
+		q -> head = 0;
 		q -> backing = realloc(q -> backing, q -> cap *= 2);
 	}
 	
-	// SUCH WORK NEEDS THIS FUNCTION
+	q -> backing[q -> tail++] = g;
 }
 
 Grid* qGet(Queue* q)
@@ -18,9 +18,8 @@ Grid* qGet(Queue* q)
 		return NULL;
 	
 	Grid* g = q -> backing[head];
-	q -> backing[q -> head++] = NULL;
+	q -> backing[q -> head] = NULL;
+	if(++q -> head > q -> cap) q -> head = 0
 	q -> len--;
 	return g;
-	
-	// SUCH MODULAR CHECKING ON HEAD NEEDS THIS FUNCTION
 }
