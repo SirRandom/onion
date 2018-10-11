@@ -1,6 +1,38 @@
 #include <string.h>
 #include "o.h"
 
+Grid* cpgrid(Grid* s)
+{
+	Grid* d = malloc(sizeof(Grid));
+	
+	d -> cycstr = NULL;
+	d -> cycstrlen = s -> cycstrlen;
+	d -> grid = malloc(sizeof(byte*) * s -> sz);
+	for(uint i = 0; i < s -> sz; ++i)
+	{
+		d -> grid[i] = malloc(sizeof(byte) * s -> sz);
+		memcpy(d -> grid[i], s -> grid[i], sizeof(byte) * s -> sz);
+	}
+	
+	d -> peri = s -> peri;
+	d -> surfarea = s -> surfarea;
+	d -> bounds.n = s -> bounds.n;
+	d -> bounds.s = s -> bounds.s;
+	d -> bounds.e = s -> bounds.e;
+	d -> bounds.w = s -> bounds.w;
+	d -> area = s -> area;
+	d -> sz = s -> sz;
+	return d;
+}
+
+void rmgrid(Grid* p)
+{
+	if(p -> cycstr != NULL && p -> cycstr != "3333") free(p -> cycstr);
+	for(uint i = 0; i < p -> sz; free(p -> grid[i++]));
+	free(p -> grid);
+	free(p);
+}
+
 static int fwdchk(const char* a, const char* b, ull sa, ull sb, ull l)
 {
 	for(uint i = 0, f = sa, k = sb; i < l; ++i)
