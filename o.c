@@ -3,6 +3,7 @@
 #define gettime(name)	ull name; QueryPerformanceCounter((LARGE_INTEGER*) &name)
 #define seconds(ta, tb)	((double) ((tb) - (ta)) / ctrfreq)
 
+char* cs3333 = "3333";
 HANDLE heap;
 ull ctrfreq;
 Queue* queues[5];
@@ -25,7 +26,7 @@ static Grid* init(uint sz)
 	Grid* g = malloc(sizeof(Grid));
 	uint i;
 	
-	g -> cycstr = "3333";
+	g -> cycstr = cs3333;
 	g -> cycstrlen = 4;
 	
 	g -> grid = malloc(sizeof(byte*) * sz);

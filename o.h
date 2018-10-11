@@ -55,6 +55,7 @@ typedef struct Queue
 	uint len;
 }
 
+extern char* cs3333;
 extern HANDLE heap;
 extern ull ctrfreq;
 extern Queue* queues[5];
