@@ -1,15 +1,14 @@
 #include "o.h"
 
-#define gettime(name)	ull name; QueryPerformanceCounter((LARGE_INTEGER*) &name)
-#define seconds(ta, tb)	((double) ((tb) - (ta)) / ctrfreq)
+#define gettime(name)		ull name; QueryPerformanceCounter((LARGE_INTEGER*) &name)
+#define seconds(ta, tb)		((double) ((tb) - (ta)) / ctrfreq)
+#define output_and_kill(x)	(print(x), rmgrid(x))
 
 char* cs3333 = "3333";
 HANDLE heap;
 ull ctrfreq;
 Queue* queues[5];
-
-//Grid* r[RC_MAX];
-//uint v = 0;
+int running = 1;
 
 static Grid* init(uint sz)
 {
@@ -53,49 +52,37 @@ static Grid* init(uint sz)
 	return g;
 }
 
-/*static void rc(Grid* g)
-{
-	if(v < RC_MAX)
-	{
-		for(uint i = 0; i < v; ++i)
-		{
-			if(eqgrid(g, r[i]))
-			{
-				rmgrid(g);
-				return;
-			}
-		}
-		r[v++] = g;
-		
-		for(uint y = 1; y < g->sz - 1; ++y)
-		{
-			for(uint x = 1; x < g->sz - 1; ++x)
-			{
-				if(is0(g, x, y))
-				{
-					Grid* gg = add(g, x, y);
-					if (gg != NULL)
-						rc(gg);
-				}
-			}
-		}
-	}
-	else
-		rmgrid(g);
-}*/
-
 static void bf(Grid* g)
 {
+	uint current = 0, p;
+	Grid *gg, *ggg;
 	
+	qAdd(queues[current], g);
+	while(running && queues[current] -> len)
+	{
+		gg = qGet(queues[current]);
+		
+		for(uint scan_y = 0; scan_y < gg -> sz; scan_y++)
+			for(uint scan_x = 0; scan_x < gg -> sz; scan_x++)
+				if(ggg = add(gg, scan_x, scan_y, &p))
+					qAdd(queues[(current + p) % 5], ggg);
+		
+		output_and_kill(gg);
+	}
+	
+	for(uint i = 0; i < 5; i++)
+	{
+		if(queues[i] -> len)
+			while(queues[i] -> len)
+				output_and_kill(qGet(queues[i]));
+		
+		free(queues[i] -> backing);
+		free(queues[i]);
+	}
 }
 
 int main(int argc, char** argv)
 {
 	bf(init(argc > 1 ? atoi(argv[1]) : 13u));
-	
-	uint i;
-	for(i = 0; i < v; i++)
-		print(r[i], cycstr(r[i]));
-
 	return 0;
 }

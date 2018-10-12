@@ -24,12 +24,13 @@
 #define placeSouthwesternL(g, x, y)	placel((g), SOUTHWEST, (x), (y))
 #define placeNorthwesternL(g, x, y)	placel((g), NORTHWEST, (x), (y))
 
-Grid* add(Grid* g, uint x, uint y)
+Grid* add(Grid* g, uint x, uint y, uint* p)
 {
 	// n | s | e | w
 	switch(g -> grid[x][y - 1] << 3 | g -> grid[x][y + 1] << 2 | g -> grid[x + 1][y] << 1 | g -> grid[x - 1][y])
 	{
 		case 1: // 0001: Attempt to place a T facing east-ward
+			*p = 4;
 			switch(nae(y) << 2 | sae(g, y) << 1 | eae(g, x))
 			{
 				case 0:
@@ -72,6 +73,7 @@ Grid* add(Grid* g, uint x, uint y)
 			}
 		
 		case 2: // 0010: Attempt to place a T piece facing west-ward
+			*p = 4;
 			switch(nae(y) << 2 | sae(g, y) << 1 | wae(x))
 			{
 				case 0:
@@ -114,6 +116,7 @@ Grid* add(Grid* g, uint x, uint y)
 			}
 		
 		case 4: // 0100: Attempt to place a T piece facing north-ward
+			*p = 4;
 			switch(nae(y) << 2 | eae(g, x) << 1 | wae(x))
 			{
 				case 0:
@@ -155,6 +158,7 @@ Grid* add(Grid* g, uint x, uint y)
 			}
 		
 		case 8: // 1000: Attempt to place a T facing south-ward
+			*p = 4;
 			switch(sae(g, y) << 2 | eae(g, x) << 1 | wae(x))
 			{
 				case 0:
@@ -196,6 +200,7 @@ Grid* add(Grid* g, uint x, uint y)
 			}
 		
 		case 5: // 0101: Attempt to place an L facing north-east-ward
+			*p = 3;
 			switch(nae(y) << 1 | eae(g, x))
 			{
 				case 0:
@@ -218,6 +223,7 @@ Grid* add(Grid* g, uint x, uint y)
 			}
 		
 		case 6: // 0110: Attempt to place an L facing north-west-ward
+			*p = 3;
 			switch(nae(y) << 1 | wae(x))
 			{
 				case 0:
@@ -240,6 +246,7 @@ Grid* add(Grid* g, uint x, uint y)
 			}
 		
 		case 9: // 1001: Attempt to place an L facing south-east-ward
+			*p = 3;
 			switch(sae(g, y) << 1 | eae(g, x))
 			{
 				case 0:
@@ -262,6 +269,7 @@ Grid* add(Grid* g, uint x, uint y)
 			}
 		
 		case 10: // 1010: Attempt to place an L facing south-west-ward
+			*p = 3;
 			switch(sae(g, y) << 1 | wae(x))
 			{
 				case 0:
@@ -284,21 +292,25 @@ Grid* add(Grid* g, uint x, uint y)
 			}
 		
 		case 7: // 0111: Attempt to place an I facing north-ward
+			*p = 2;
 			if(nae(y) || (is0(g, x - 1, y - 2) && is0(g, x + 1, y - 2) && is0(g, x, y - 2)))
 				return placeNorthernI(g, x, y);
 			return NULL;
 		
 		case 11: // 1011: Attempt to place an I facing south-ward
+			*p = 2;
 			if(sae(g, y) || (is0(g, x - 1, y + 2) && is0(g, x + 1, y + 2) && is0(g, x, y + 2)))
 				return placeSouthernI(g, x, y);
 			return NULL;
 		
 		case 13: // 1101: Attempt to place an I facing east-ward
+			*p = 2;
 			if(eae(g, x) || (is0(g, x + 2, y - 1) && is0(g, x + 2, y + 1) && is0(g, x + 2, y)))
 				return placeEasternI(g, x, y);
 			return NULL;
 		
 		case 14: // 1110: Attempt to place an I facing west-ward
+			*p = 2;
 			if(wae(x) || (is0(g, x - 2, y - 1) && is0(g, x - 2, y + 1) && is0(g, x - 2, y)))
 				return placeWesternI(g, x, y);
 			// return NULL; intentionally fall through

@@ -1,12 +1,12 @@
 #include "o.h"
 
-void print(Grid* g, const char* fn)
+void print(Grid* g)
 {
-	FILE* f = fopen(fn, "w");
-	
-	if(f != NULL)
+	FILE* f;
+	if(f = fopen(cycstr(g), "w"))
 	{
-		fprintf(f,
+		fprintf(
+			f,
 			"cycstr    %s\n"
 			"cycstrlen %u\n"
 			"perimeter %u\n"
@@ -35,9 +35,5 @@ void print(Grid* g, const char* fn)
 		fprintf(f, "\n");
 		fclose(f);
 	}
-	else
-	{
-		;
-		DebugBreak();
-	}
+	else DebugBreak();
 }
