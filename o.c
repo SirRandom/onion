@@ -90,6 +90,6 @@ l:	while(running && queues[current] -> len)
 
 int main(int argc, char** argv)
 {
-	//bf(init(argc > 1 ? atoi(argv[1]) : 13u));
+	bf(init(argc > 1 ? atoi(argv[1]) : 13u));
 	return 0;
 }
