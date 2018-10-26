@@ -18,7 +18,7 @@ static Grid* init(uint sz)
 	for(uint i = 0; i < 5; i++)
 	{
 		queues[i] = mallocz(sizeof(Queue));
-		queues[i] -> backing = malloc(sizeof(Grid*) * QUEUE_INCREMENT);
+		queues[i] -> backing = mallocz(sizeof(Grid*) * QUEUE_INCREMENT);
 		queues[i] -> cap = QUEUE_INCREMENT;
 	}
 	
@@ -58,16 +58,23 @@ static void bf(Grid* g)
 	Grid *gg, *ggg;
 	
 	qAdd(queues[current], g);
-	while(running && queues[current] -> len)
+l:	while(running && queues[current] -> len)
 	{
 		gg = qGet(queues[current]);
 		
-		for(uint scan_y = 0; scan_y < gg -> sz; scan_y++)
-			for(uint scan_x = 0; scan_x < gg -> sz; scan_x++)
+		for(uint scan_y = 1; scan_y < gg -> sz - 1; scan_y++)
+			for(uint scan_x = 1; scan_x < gg -> sz - 1; scan_x++)
 				if(ggg = add(gg, scan_x, scan_y, &p))
 					qAdd(queues[(current + p) % 5], ggg);
 		
 		output_and_kill(gg);
+	}
+	
+	if(running)
+	{
+		current++;
+		current %= 5;
+		goto l;
 	}
 	
 	for(uint i = 0; i < 5; i++)
@@ -83,6 +90,6 @@ static void bf(Grid* g)
 
 int main(int argc, char** argv)
 {
-	bf(init(argc > 1 ? atoi(argv[1]) : 13u));
+	//bf(init(argc > 1 ? atoi(argv[1]) : 13u));
 	return 0;
 }

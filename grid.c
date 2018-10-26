@@ -70,11 +70,13 @@ static int cycstreq(const char* a, const char* b)
 
 int eqgrid(Grid* a, Grid* b)
 {
-	return (a -> area == b -> area)
-		 && (a -> peri == b -> peri)
-		 && (a -> surfarea == b -> surfarea)
-		 && (a -> cycstrlen == b -> cycstrlen)
-		 && cycstreq(cycstr(a), cycstr(b));
+	int _0 = (a -> area == b -> area);
+	int _1 = (a -> peri == b -> peri);
+	int _2 = (a -> surfarea == b -> surfarea);
+	int _3 = (a -> cycstrlen == b -> cycstrlen);
+	int _4 = cycstreq(cycstr(a), cycstr(b));
+	
+	return _0 && _1 && _2 && _3 && _4;
 }
 
 // These checks are illegal. They do not help.

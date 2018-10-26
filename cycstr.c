@@ -18,46 +18,41 @@ char* cycstr(Grid* g)
 {
 	if(g -> cycstr == NULL)
 	{
-		g -> cycstr = malloc(sizeof(char) * g -> cycstrlen + 1);
-		uint x, y, ix, iy, i = y = x = 0;
-		int t, dx = 1, dy = 1;
+		int x, y, ix, iy, dx = 1, dy = 1, i = 0, t;
 		char c;
 		
-		for(; y < g -> sz; y++)
-			for(x = 0; x < g -> sz; x++)
-				if(is_1(g, x, y))
+		g -> cycstr = mallocz(sizeof(char) * g -> cycstrlen + 1);
+		
+		for(y = 0; y < 9; y++)
+			for(x = 0; x < 9; x++)
+				if(g -> grid[y][x])
 					goto found;
 found:
-		ix = x;
-		iy = y;
+		ix = x++;
+		iy = y++;
+		g -> cycstr[i++] = '3';
 		
-		g -> cycstr[i++] = cycch(g, x++, y++);
-loop:
-		g -> cycstr[i++] = c = cycch(g, x, y);
-		
-		switch(c)
+		do
 		{
-			case '1':
-				//ccw
-				t = -dx;
-				dx = dy;
-				dy = t;
-				break;
-			case '3':
-				//cw
-				t = -dy;
-				dy = dx;
-				dx = t;
-				break;
+			switch(c = cycch(g, x, y))
+			{
+				case '1':
+					t = -dx;
+					dx = dy;
+					dy = t;
+					break;
+				case '3':
+					t = -dy;
+					dy = dx;
+					dx = t;
+					break;
 			}
-		
-		x += dx;
-		y += dy;
-		
-		if(ix == x && iy == y)
-			g -> cycstr[i] = '\0';
-		else
-			goto loop;
+			
+			g -> cycstr[i++] = c;
+			x += dx;
+			y += dy;
+			
+		} while(ix != x || iy != y);
 	}
 	
 	return g -> cycstr;

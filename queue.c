@@ -19,6 +19,7 @@ void qAdd(Queue* q, Grid* g)
 	}
 	
 	q -> backing[q -> tail++] = g;
+	q -> len++;
 }
 
 Grid* qGet(Queue* q)
