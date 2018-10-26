@@ -34,37 +34,37 @@ Grid* add(Grid* g, uint x, uint y, uint* p)
 			switch(nae(y) << 2 | sae(g, y) << 1 | eae(g, x))
 			{
 				case 0:
-					if(is0(g, x - 1, y - 2) && is0(g, x - 1, y + 2) && is0(g, x + 2, y - 1) && is0(g, x + 2, y + 1) && is0(g, x + 1, y - 2) && is0(g, x + 1, y + 2) && is0(g, x, y - 2) && is0(g, x, y + 2) && is0(g, x + 2, y))
+					if(is_0(g, x - 1, y - 2) && is_0(g, x - 1, y + 2) && is_0(g, x + 2, y - 1) && is_0(g, x + 2, y + 1) && is_0(g, x + 1, y - 2) && is_0(g, x + 1, y + 2) && is_0(g, x, y - 2) && is_0(g, x, y + 2) && is_0(g, x + 2, y))
 						return placeEasternT(g, x, y);
 					return NULL;
 				
 				case 1:
-					if(is0(g, x - 1, y - 2) && is0(g, x - 1, y + 2) && is0(g, x, y - 2) && is0(g, x, y + 2))
+					if(is_0(g, x - 1, y - 2) && is_0(g, x - 1, y + 2) && is_0(g, x, y - 2) && is_0(g, x, y + 2))
 						return placeEasternT(g, x, y);
 					return NULL;
 				
 				case 2:
-					if(is0(g, x - 1, y - 2) && is0(g, x + 2, y - 1) && is0(g, x + 1, y - 2) && is0(g, x, y - 2) && is0(g, x + 2, y))
+					if(is_0(g, x - 1, y - 2) && is_0(g, x + 2, y - 1) && is_0(g, x + 1, y - 2) && is_0(g, x, y - 2) && is_0(g, x + 2, y))
 						return placeEasternT(g, x, y);
 					return NULL;
 				
 				case 3:
-					if(is0(g, x - 1, y - 2) && is0(g, x, y - 2))
+					if(is_0(g, x - 1, y - 2) && is_0(g, x, y - 2))
 						return placeEasternT(g, x, y);
 					return NULL;
 				
 				case 4:
-					if(is0(g, x - 1, y + 2) && is0(g, x + 2, y + 1) && is0(g, x + 1, y + 2) && is0(g, x, y + 2) && is0(g, x + 2, y))
+					if(is_0(g, x - 1, y + 2) && is_0(g, x + 2, y + 1) && is_0(g, x + 1, y + 2) && is_0(g, x, y + 2) && is_0(g, x + 2, y))
 						return placeEasternT(g, x, y);
 					return NULL;
 				
 				case 5:
-					if(is0(g, x - 1, y + 2) && is0(g, x, y + 2))
+					if(is_0(g, x - 1, y + 2) && is_0(g, x, y + 2))
 						return placeEasternT(g, x, y);
 					return NULL;
 				
 				case 6:
-					if(is0(g, x + 2, y))
+					if(is_0(g, x + 2, y))
 						return placeEasternT(g, x, y);
 					return NULL;
 				
@@ -77,37 +77,37 @@ Grid* add(Grid* g, uint x, uint y, uint* p)
 			switch(nae(y) << 2 | sae(g, y) << 1 | wae(x))
 			{
 				case 0:
-					if(is0(g, x + 1, y - 2) && is0(g, x + 1, y + 2) && is0(g, x - 2, y - 1) && is0(g, x - 2, y + 1) && is0(g, x - 1, y - 2) && is0(g, x - 1, y + 2) && is0(g, x, y - 2) && is0(g, x, y + 2) && is0(g, x - 2, y))
+					if(is_0(g, x + 1, y - 2) && is_0(g, x + 1, y + 2) && is_0(g, x - 2, y - 1) && is_0(g, x - 2, y + 1) && is_0(g, x - 1, y - 2) && is_0(g, x - 1, y + 2) && is_0(g, x, y - 2) && is_0(g, x, y + 2) && is_0(g, x - 2, y))
 						return placeWesternT(g, x, y);
 					return NULL;
 				
 				case 1:
-					if(is0(g, x + 1, y - 2) && is0(g, x + 1, y + 2) && is0(g, x, y - 2) && is0(g, x, y + 2))
+					if(is_0(g, x + 1, y - 2) && is_0(g, x + 1, y + 2) && is_0(g, x, y - 2) && is_0(g, x, y + 2))
 						return placeWesternT(g, x, y);
 					return NULL;
 				
 				case 2:
-					if(is0(g, x + 1, y - 2) && is0(g, x - 2, y - 1) && is0(g, x - 1, y - 2) && is0(g, x, y - 2) && is0(g, x - 2, y))
+					if(is_0(g, x + 1, y - 2) && is_0(g, x - 2, y - 1) && is_0(g, x - 1, y - 2) && is_0(g, x, y - 2) && is_0(g, x - 2, y))
 						return placeWesternT(g, x, y);
 					return NULL;
 				
 				case 3:
-					if(is0(g, x + 1, y - 2) && is0(g, x, y - 2))
+					if(is_0(g, x + 1, y - 2) && is_0(g, x, y - 2))
 						return placeWesternT(g, x, y);
 					return NULL;
 				
 				case 4:
-					if(is0(g, x + 1, y + 2) && is0(g, x - 2, y + 1) && is0(g, x - 1, y + 2) && is0(g, x, y + 2) && is0(g, x - 2, y))
+					if(is_0(g, x + 1, y + 2) && is_0(g, x - 2, y + 1) && is_0(g, x - 1, y + 2) && is_0(g, x, y + 2) && is_0(g, x - 2, y))
 						return placeWesternT(g, x, y);
 					return NULL;
 				
 				case 5:
-					if(is0(g, x + 1, y + 2) && is0(g, x, y + 2))
+					if(is_0(g, x + 1, y + 2) && is_0(g, x, y + 2))
 						return placeWesternT(g, x, y);
 					return NULL;
 				
 				case 6:
-					if(is0(g, x - 2, y))
+					if(is_0(g, x - 2, y))
 						return placeWesternT(g, x, y);
 					return NULL;
 				
@@ -120,36 +120,36 @@ Grid* add(Grid* g, uint x, uint y, uint* p)
 			switch(nae(y) << 2 | eae(g, x) << 1 | wae(x))
 			{
 				case 0:
-					if(is0(g, x + 2, y + 1) && is0(g, x - 2, y + 1) && is0(g, x + 1, y - 2) && is0(g, x - 1, y - 2) && is0(g, x + 2, y - 1) && is0(g, x - 2, y - 1) && is0(g, x + 2, y) && is0(g, x - 2, y) && is0(g, x, y - 2))
+					if(is_0(g, x + 2, y + 1) && is_0(g, x - 2, y + 1) && is_0(g, x + 1, y - 2) && is_0(g, x - 1, y - 2) && is_0(g, x + 2, y - 1) && is_0(g, x - 2, y - 1) && is_0(g, x + 2, y) && is_0(g, x - 2, y) && is_0(g, x, y - 2))
 						return placeNorthernT(g, x, y);
 					return NULL;
 				
 				case 1:
-					if(is0(g, x + 2, y + 1) && is0(g, x + 1, y - 2) && is0(g, x + 2, y - 1) && is0(g, x + 2, y) && is0(g, x, y - 2))
+					if(is_0(g, x + 2, y + 1) && is_0(g, x + 1, y - 2) && is_0(g, x + 2, y - 1) && is_0(g, x + 2, y) && is_0(g, x, y - 2))
 						return placeNorthernT(g, x, y);
 					return NULL;
 				
 				case 2:
-					if(is0(g, x - 2, y + 1) && is0(g, x - 1, y - 2) && is0(g, x - 2, y - 1) && is0(g, x - 2, y) && is0(g, x, y - 2))
+					if(is_0(g, x - 2, y + 1) && is_0(g, x - 1, y - 2) && is_0(g, x - 2, y - 1) && is_0(g, x - 2, y) && is_0(g, x, y - 2))
 						return placeNorthernT(g, x, y);
 					return NULL;
 				
 				case 3:
-					if(is0(g, x, y - 2)) return placeNorthernT(g, x, y);
+					if(is_0(g, x, y - 2)) return placeNorthernT(g, x, y);
 					return NULL;
 				
 				case 4:
-					if(is0(g, x + 2, y + 1) && is0(g, x - 2, y + 1) && is0(g, x + 2, y) && is0(g, x - 2, y))
+					if(is_0(g, x + 2, y + 1) && is_0(g, x - 2, y + 1) && is_0(g, x + 2, y) && is_0(g, x - 2, y))
 						return placeNorthernT(g, x, y);
 					return NULL;
 				
 				case 5:
-					if(is0(g, x + 2, y + 1) && is0(g, x + 2, y))
+					if(is_0(g, x + 2, y + 1) && is_0(g, x + 2, y))
 						return placeNorthernT(g, x, y);
 					return NULL;
 				
 				case 6:
-					if(is0(g, x - 2, y + 1) && is0(g, x - 2, y))
+					if(is_0(g, x - 2, y + 1) && is_0(g, x - 2, y))
 						return placeNorthernT(g, x, y);
 					return NULL;
 				
@@ -162,36 +162,36 @@ Grid* add(Grid* g, uint x, uint y, uint* p)
 			switch(sae(g, y) << 2 | eae(g, x) << 1 | wae(x))
 			{
 				case 0:
-					if(is0(g, x + 2, y - 1) && is0(g, x - 2, y - 1) && is0(g, x + 1, y + 2) && is0(g, x - 1, y + 2) && is0(g, x + 2, y + 1) && is0(g, x - 2, y + 1) && is0(g, x + 2, y) && is0(g, x - 2, y) && is0(g, x, y + 2))
+					if(is_0(g, x + 2, y - 1) && is_0(g, x - 2, y - 1) && is_0(g, x + 1, y + 2) && is_0(g, x - 1, y + 2) && is_0(g, x + 2, y + 1) && is_0(g, x - 2, y + 1) && is_0(g, x + 2, y) && is_0(g, x - 2, y) && is_0(g, x, y + 2))
 						return placeSouthernT(g, x, y);
 					return NULL;
 				
 				case 1:
-					if(is0(g, x + 2, y - 1) && is0(g, x + 1, y + 2) && is0(g, x + 2, y + 1) && is0(g, x + 2, y) && is0(g, x, y + 2))
+					if(is_0(g, x + 2, y - 1) && is_0(g, x + 1, y + 2) && is_0(g, x + 2, y + 1) && is_0(g, x + 2, y) && is_0(g, x, y + 2))
 						return placeSouthernT(g, x, y);
 					return NULL;
 				
 				case 2:
-					if(is0(g, x - 2, y - 1) && is0(g, x - 1, y + 2) && is0(g, x - 2, y + 1) && is0(g, x - 2, y) && is0(g, x, y + 2))
+					if(is_0(g, x - 2, y - 1) && is_0(g, x - 1, y + 2) && is_0(g, x - 2, y + 1) && is_0(g, x - 2, y) && is_0(g, x, y + 2))
 						return placeSouthernT(g, x, y);
 					return NULL;
 				
 				case 3:
-					if(is0(g, x, y + 2)) return placeSouthernT(g, x, y);
+					if(is_0(g, x, y + 2)) return placeSouthernT(g, x, y);
 					return NULL;
 				
 				case 4:
-					if(is0(g, x + 2, y - 1) && is0(g, x - 2, y - 1) && is0(g, x + 2, y) && is0(g, x - 2, y))
+					if(is_0(g, x + 2, y - 1) && is_0(g, x - 2, y - 1) && is_0(g, x + 2, y) && is_0(g, x - 2, y))
 						return placeSouthernT(g, x, y);
 					return NULL;
 				
 				case 5:
-					if(is0(g, x + 2, y - 1) && is0(g, x + 2, y))
+					if(is_0(g, x + 2, y - 1) && is_0(g, x + 2, y))
 						return placeSouthernT(g, x, y);
 					return NULL;
 				
 				case 6:
-					if(is0(g, x - 2, y - 1) && is0(g, x - 2, y))
+					if(is_0(g, x - 2, y - 1) && is_0(g, x - 2, y))
 						return placeSouthernT(g, x, y);
 					return NULL;
 				
@@ -204,17 +204,17 @@ Grid* add(Grid* g, uint x, uint y, uint* p)
 			switch(nae(y) << 1 | eae(g, x))
 			{
 				case 0:
-					if(is0(g, x - 1, y - 2) && is0(g, x + 2, y + 1) && is0(g, x + 1, y - 2) && is0(g, x + 2, y - 1) && is0(g, x, y - 2) && is0(g, x + 2, y))
+					if(is_0(g, x - 1, y - 2) && is_0(g, x + 2, y + 1) && is_0(g, x + 1, y - 2) && is_0(g, x + 2, y - 1) && is_0(g, x, y - 2) && is_0(g, x + 2, y))
 						return placeNortheasternL(g, x, y);
 					return NULL;
 				
 				case 1:
-					if(is0(g, x - 1, y - 2) && is0(g, x, y - 2))
+					if(is_0(g, x - 1, y - 2) && is_0(g, x, y - 2))
 						return placeNortheasternL(g, x, y);
 					return NULL;
 				
 				case 2:
-					if(is0(g, x + 2, y + 1) && is0(g, x + 2, y))
+					if(is_0(g, x + 2, y + 1) && is_0(g, x + 2, y))
 						return placeNortheasternL(g, x, y);
 					return NULL;
 				
@@ -227,17 +227,17 @@ Grid* add(Grid* g, uint x, uint y, uint* p)
 			switch(nae(y) << 1 | wae(x))
 			{
 				case 0:
-					if(is0(g, x + 1, y - 2) && is0(g, x - 2, y + 1) && is0(g, x - 1, y - 2) && is0(g, x - 2, y - 1) && is0(g, x, y - 2) && is0(g, x - 2, y))
+					if(is_0(g, x + 1, y - 2) && is_0(g, x - 2, y + 1) && is_0(g, x - 1, y - 2) && is_0(g, x - 2, y - 1) && is_0(g, x, y - 2) && is_0(g, x - 2, y))
 						return placeNorthwesternL(g, x, y);
 					return NULL;
 				
 				case 1:
-					if(is0(g, x + 1, y - 2) && is0(g, x, y - 2))
+					if(is_0(g, x + 1, y - 2) && is_0(g, x, y - 2))
 						return placeNorthwesternL(g, x, y);
 					return NULL;
 				
 				case 2:
-					if(is0(g, x - 2, y + 1) && is0(g, x - 2, y))
+					if(is_0(g, x - 2, y + 1) && is_0(g, x - 2, y))
 						return placeNorthwesternL(g, x, y);
 					return NULL;
 				
@@ -250,17 +250,17 @@ Grid* add(Grid* g, uint x, uint y, uint* p)
 			switch(sae(g, y) << 1 | eae(g, x))
 			{
 				case 0:
-					if(is0(g, x + 2, y - 1) && is0(g, x - 1, y + 2) && is0(g, x + 2, y + 1) && is0(g, x + 1, y + 2) && is0(g, x + 2, y) && is0(g, x, y + 2))
+					if(is_0(g, x + 2, y - 1) && is_0(g, x - 1, y + 2) && is_0(g, x + 2, y + 1) && is_0(g, x + 1, y + 2) && is_0(g, x + 2, y) && is_0(g, x, y + 2))
 						return placeSoutheasternL(g, x, y);
 					return NULL;
 				
 				case 1:
-					if(is0(g, x - 1, y + 2) && is0(g, x, y + 2))
+					if(is_0(g, x - 1, y + 2) && is_0(g, x, y + 2))
 						return placeSoutheasternL(g, x, y);
 					return NULL;
 				
 				case 2:
-					if(is0(g, x + 2, y - 1) && is0(g, x + 2, y))
+					if(is_0(g, x + 2, y - 1) && is_0(g, x + 2, y))
 						return placeSoutheasternL(g, x, y);
 					return NULL;
 				
@@ -273,17 +273,17 @@ Grid* add(Grid* g, uint x, uint y, uint* p)
 			switch(sae(g, y) << 1 | wae(x))
 			{
 				case 0:
-					if(is0(g, x - 2, y - 1) && is0(g, x + 1, y + 2) && is0(g, x - 2, y + 1) && is0(g, x - 1, y + 2) && is0(g, x - 2, y) && is0(g, x, y + 2))
+					if(is_0(g, x - 2, y - 1) && is_0(g, x + 1, y + 2) && is_0(g, x - 2, y + 1) && is_0(g, x - 1, y + 2) && is_0(g, x - 2, y) && is_0(g, x, y + 2))
 						return placeSouthwesternL(g, x, y);
 					return NULL;
 				
 				case 1:
-					if(is0(g, x + 1, y + 2) && is0(g, x, y + 2))
+					if(is_0(g, x + 1, y + 2) && is_0(g, x, y + 2))
 						return placeSouthwesternL(g, x, y);
 					return NULL;
 				
 				case 2:
-					if(is0(g, x - 2, y - 1) && is0(g, x - 2, y))
+					if(is_0(g, x - 2, y - 1) && is_0(g, x - 2, y))
 						return placeSouthwesternL(g, x, y);
 					return NULL;
 				
@@ -293,25 +293,25 @@ Grid* add(Grid* g, uint x, uint y, uint* p)
 		
 		case 7: // 0111: Attempt to place an I facing north-ward
 			*p = 2;
-			if(nae(y) || (is0(g, x - 1, y - 2) && is0(g, x + 1, y - 2) && is0(g, x, y - 2)))
+			if(nae(y) || (is_0(g, x - 1, y - 2) && is_0(g, x + 1, y - 2) && is_0(g, x, y - 2)))
 				return placeNorthernI(g, x, y);
 			return NULL;
 		
 		case 11: // 1011: Attempt to place an I facing south-ward
 			*p = 2;
-			if(sae(g, y) || (is0(g, x - 1, y + 2) && is0(g, x + 1, y + 2) && is0(g, x, y + 2)))
+			if(sae(g, y) || (is_0(g, x - 1, y + 2) && is_0(g, x + 1, y + 2) && is_0(g, x, y + 2)))
 				return placeSouthernI(g, x, y);
 			return NULL;
 		
 		case 13: // 1101: Attempt to place an I facing east-ward
 			*p = 2;
-			if(eae(g, x) || (is0(g, x + 2, y - 1) && is0(g, x + 2, y + 1) && is0(g, x + 2, y)))
+			if(eae(g, x) || (is_0(g, x + 2, y - 1) && is_0(g, x + 2, y + 1) && is_0(g, x + 2, y)))
 				return placeEasternI(g, x, y);
 			return NULL;
 		
 		case 14: // 1110: Attempt to place an I facing west-ward
 			*p = 2;
-			if(wae(x) || (is0(g, x - 2, y - 1) && is0(g, x - 2, y + 1) && is0(g, x - 2, y)))
+			if(wae(x) || (is_0(g, x - 2, y - 1) && is_0(g, x - 2, y + 1) && is_0(g, x - 2, y)))
 				return placeWesternI(g, x, y);
 			// return NULL; intentionally fall through
 		

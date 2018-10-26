@@ -70,9 +70,9 @@ static int cycstreq(const char* a, const char* b)
 
 int eqgrid(Grid* a, Grid* b)
 {
-	return (a -> ord == b -> ord)
-		 && (a -> edges == b -> edges)
-		 && (a -> fwdcells == b -> fwdcells)
+	return (a -> area == b -> area)
+		 && (a -> peri == b -> peri)
+		 && (a -> surfarea == b -> surfarea)
 		 && (a -> cycstrlen == b -> cycstrlen)
 		 && cycstreq(cycstr(a), cycstr(b));
 }

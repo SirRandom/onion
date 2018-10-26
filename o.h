@@ -53,18 +53,18 @@ typedef struct Queue
 	uint tail;
 	uint cap;
 	uint len;
-}
+} Queue;
 
 extern char* cs3333;
 extern HANDLE heap;
 extern ull ctrfreq;
 extern Queue* queues[5];
 
-Grid* add(Grid*, uint, uint);
+Grid* add(Grid*, uint, uint, uint*);
 Grid* cpgrid(Grid*);
 char* cycstr(Grid*);
 int   eqgrid(Grid*, Grid*);
-void  print(Grid*, const char*);
+void  print(Grid*);
 void  rmgrid(Grid*);
 void  qAdd(Queue*, Grid*);
 Grid* qGet(Queue*);

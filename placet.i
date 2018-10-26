@@ -4,9 +4,9 @@ static Grid* placet(Grid* g, uint o, uint x, uint y)
 {
 	Grid* gg = cpgrid(g);
 	++gg -> grid[x][y];
-	gg -> ord += 4;
-	gg -> edges += 8;
-	gg -> fwdcells += 3;
+	gg -> area += 4;
+	gg -> peri += 8;
+	gg -> surfarea += 3;
 	gg -> cycstrlen += 4;
 	
 	switch(o)
