@@ -24,7 +24,7 @@
 #define placeSouthwesternL(g, x, y)	placel((g), SOUTHWEST, (x), (y))
 #define placeNorthwesternL(g, x, y)	placel((g), NORTHWEST, (x), (y))
 
-Grid* add(Grid* g, uint x, uint y, uint* p)
+Grid* add(Grid* g, int x, int y, int* p)
 {
 	// n | s | e | w
 	switch(g -> grid[x][y - 1] << 3 | g -> grid[x][y + 1] << 2 | g -> grid[x + 1][y] << 1 | g -> grid[x - 1][y])

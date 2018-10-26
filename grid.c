@@ -8,7 +8,7 @@ Grid* cpgrid(Grid* s)
 	d -> cycstr = NULL;
 	d -> cycstrlen = s -> cycstrlen;
 	d -> grid = malloc(sizeof(byte*) * s -> sz);
-	for(uint i = 0; i < s -> sz; ++i)
+	for(int i = 0; i < s -> sz; ++i)
 	{
 		d -> grid[i] = malloc(sizeof(byte) * s -> sz);
 		memcpy(d -> grid[i], s -> grid[i], sizeof(byte) * s -> sz);
@@ -28,14 +28,14 @@ Grid* cpgrid(Grid* s)
 void rmgrid(Grid* p)
 {
 	if(p -> cycstr != NULL && p -> cycstr != cs3333) free(p -> cycstr);
-	for(uint i = 0; i < p -> sz; free(p -> grid[i++]));
+	for(int i = 0; i < p -> sz; free(p -> grid[i++]));
 	free(p -> grid);
 	free(p);
 }
 
 static int fwdchk(const char* a, const char* b, ull sa, ull sb, ull l)
 {
-	for(uint i = 0, f = sa, k = sb; i < l; ++i)
+	for(int i = 0, f = sa, k = sb; i < l; ++i)
 		if(a[(sa + i) % l] != b[(sb + i) % l])
 			return 0;
 	return 1;

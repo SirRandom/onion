@@ -1,6 +1,6 @@
 #include "o.h"
 
-static char cycch(Grid* g, uint x, uint y)
+static char cycch(Grid* g, int x, int y)
 {
 	byte n, s, e, w = e = s = n = 0;
 	if(y) n = g -> grid[x][y - 1];
