@@ -27,6 +27,13 @@
 Grid* add(Grid* g, int x, int y, int* p)
 {
 	// n | s | e | w
+	
+	if(x < 0 || y < 0)
+	{
+		printf("!!! TRIED TO ADD PAST BOUNDARIES !!!\n");
+		printf("Grid %s: %d %d\n", cycstr(g), x, y);
+	}
+	
 	switch(g -> grid[x][y - 1] << 3 | g -> grid[x][y + 1] << 2 | g -> grid[x + 1][y] << 1 | g -> grid[x - 1][y])
 	{
 		case 1: // 0001: Attempt to place a T facing east-ward

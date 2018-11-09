@@ -60,7 +60,7 @@ extern HANDLE heap;
 extern ull ctrfreq;
 extern Queue* queues[5];
 
-Grid* add(Grid*, uint, uint, uint*);
+Grid* add(Grid*, int, int, int*);
 Grid* cpgrid(Grid*);
 char* cycstr(Grid*);
 int   eqgrid(Grid*, Grid*);
