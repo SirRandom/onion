@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 #define RC_MAX (1024*8)
-#define QUEUE_INCREMENT 32
+#define QUEUE_INITSZ 32
 
 #define malloc(b)			HeapAlloc(heap, 0, (b))
 #define mallocz(b)		HeapAlloc(heap, HEAP_ZERO_MEMORY, (b))
@@ -56,9 +56,10 @@ typedef struct Queue
 } Queue;
 
 extern char* cs3333;
-extern HANDLE heap;
+extern HANDLE heap, hconout, hconin;
 extern ull ctrfreq;
 extern Queue* queues[5];
+extern uint active_queue, v;
 
 Grid* add(Grid*, int, int, int*);
 Grid* cpgrid(Grid*);
@@ -68,6 +69,11 @@ void  print(Grid*);
 void  rmgrid(Grid*);
 void  qAdd(Queue*, Grid*);
 Grid* qGet(Queue*);
+
+/* DEBUG FUNCTIONS */
+void pg(Grid*);
+void pq(Queue*);
+void paq(void);
 
 #define ___ONION___
 #endif

@@ -4,10 +4,10 @@
 #include "placel.i"
 #include "placet.i"
 
-#define nae(y)				((y) == 1)
-#define sae(g, y)			((y) == (g) -> sz - 2)
-#define eae(g, x)			((x) == (g) -> sz - 2)
-#define wae(x)				((x) == 1)
+#define nae(y)		((y) == 1)
+#define sae(g, y)	((y) == (g) -> sz - 2)
+#define eae(g, x)	((x) == (g) -> sz - 2)
+#define wae(x)		((x) == 1)
 
 #define placeNorthernT(g, x, y)		placet((g), NORTH, (x), (y))
 #define placeSouthernT(g, x, y)		placet((g), SOUTH, (x), (y))

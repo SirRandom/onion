@@ -35,5 +35,9 @@ void print(Grid* g)
 		fprintf(f, "\n");
 		fclose(f);
 	}
-	else DebugBreak();
+	else
+	{
+		printf("ERROR OPENING FILE.\n");
+		DebugBreak();
+	}
 }
