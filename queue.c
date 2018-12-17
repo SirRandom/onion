@@ -48,13 +48,7 @@ len, q -> cap);
 	q -> backing[q -> tail++] = g;
 	if(q -> tail >= q -> cap) q -> tail = 0;
 	q -> len++;
-	/*if(v == 969)
-	{
-		paq();
-		//DebugBreak(); // debugger
-	}*/
-	
-	//printf("%d\n", ++v);
+	++v;
 }
 
 Grid* qGet(Queue* q)

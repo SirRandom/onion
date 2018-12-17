@@ -5,12 +5,12 @@
 #define output_and_kill(x)	(print(x), rmgrid(x))
 
 char* cs3333 = "3333";
-HANDLE heap, hconin, hconout;
+HANDLE heap, hconin, hconout, hout;
 ull ctrfreq;
 Queue* queues[5];
-int running = 1;
-int queue = 0;
-uint active_queue = 0, v = 0;
+int running = 1, end = 0;
+int queue = 2;
+uint active_queue = 0, v = 0, disk = 0;
 
 BOOL CtrlHandler(DWORD ctrl)
 {
@@ -21,6 +21,9 @@ BOOL CtrlHandler(DWORD ctrl)
 		case CTRL_CLOSE_EVENT:
 		case CTRL_LOGOFF_EVENT:
 		default:
+			FillConsoleOutputAttribute(hout, 0x0C, WIN_X * 2, (COORD) {0, 9}, &u);
+			OutputXY(1, 9, "Received kill signal   ");
+			OutputXY(1, 10, "Finalizing and dumping grids...");
 			running = 0;
 			return TRUE;
 	}
@@ -33,6 +36,16 @@ static Grid* init(uint sz)
 	SetConsoleCtrlHandler(CtrlHandler, TRUE);
 	hconout = GetStdHandle(STD_OUTPUT_HANDLE);
 	hconin = GetStdHandle(STD_INPUT_HANDLE);
+	hout = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, 0, CONSOLE_TEXTMODE_BUFFER, 0);
+	SetConsoleActiveScreenBuffer(hout);
+	resize(hout, WIN_X, WIN_Y);
+	SetConsoleTitleA("Onion");
+	
+	FillConsoleOutputAttribute(hout, 0x08, WIN_X * 2, (COORD) {0, 9}, &u);
+	OutputXY(1, 1, "Currently working on queue of area");
+	OutputXY(1, 9, "Use CTRL+C to terminate");
+	
+	thread(th_update, 0);
 	
 	for(uint i = 0; i < 5; i++)
 	{
@@ -79,6 +92,8 @@ static void bf(Grid* g)
 	qAdd(queues[active_queue], g);
 	while(running)
 	{
+		OutputXY(36, 1, digits(++queue));
+		
 		while(queues[active_queue] -> len)
 		{
 			if(!(gg = qGet(queues[active_queue])))
@@ -93,7 +108,6 @@ static void bf(Grid* g)
 		}
 		
 		active_queue = (active_queue + 1) % 5;
-		//printf("Finished queue %d. v=%d\n", queue++, v);
 	}
 	
 	for(uint i = 0; i < 5; i++)
@@ -110,5 +124,13 @@ static void bf(Grid* g)
 int main(int argc, char** argv)
 {
 	bf(init(argc > 1 ? atoi(argv[1]) : 13u));
+	
+	end = 1;
+	FillConsoleOutputAttribute(hout, 0x0A, WIN_X * 2, (COORD) {0, 9}, &u);
+	OutputXY(1, 9, "Grids successfully dumped to disk");
+	OutputXY(1, 10, "Sleeping for ten seconds...    ");
+	
+	Sleep(10000);
+	SetConsoleActiveScreenBuffer(hconout);
 	return 0;
 }
